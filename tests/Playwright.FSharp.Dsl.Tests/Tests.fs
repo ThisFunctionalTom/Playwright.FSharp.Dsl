@@ -4,6 +4,7 @@ open Expecto
 open Microsoft.Playwright
 open Playwright.FSharp.Dsl
 open type Playwright.FSharp.Dsl.PW
+open Playwright.FSharp.Dsl.Extensions
 
 module ExpectoPlaywright =
     type PwTestBuilder (testName) =
@@ -19,19 +20,13 @@ module ExpectoPlaywright =
 open ExpectoPlaywright
 
 module SampleTests =
-    let simpleTest =
-        playwright {
-            let! _ = goto "https://playwright.dev/dotnet"
-            let! bytes = screenshot (PageScreenshotOptions(Path = "screenshot.png"))
-            return ()
-        }
-
     [<Tests>]
     let tests =
         testList "samples" [
             pwTest "Playwright sample" {
                 let! _ = goto "https://playwright.dev/dotnet"
-                let! _ = screenshot (PageScreenshotOptions(Path = "screenshot1.png"))
+                screenshot "screenshot3.png"
+                printfn "Screenshot"
                 return ()
             }
         ]

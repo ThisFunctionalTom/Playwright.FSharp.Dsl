@@ -560,193 +560,193 @@ module CustomOperations =
     type PlaywrightBuilder with
         [<CustomOperation("waitForLoadState", MaintainsVariableSpaceUsingBind = true)>]
         member builder.waitForLoadState(x: PlaywrightTest<_>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.WaitForLoadStateAsync())
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.WaitForLoadStateAsync())
         member builder.waitForLoadState(x: PlaywrightTest<_>, state: Nullable<LoadState>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.WaitForLoadStateAsync(state))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.WaitForLoadStateAsync(state))
         member builder.waitForLoadState(x: PlaywrightTest<_>, state: Nullable<LoadState>, options: PageWaitForLoadStateOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.WaitForLoadStateAsync(state, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.WaitForLoadStateAsync(state, options))
         [<CustomOperation("waitForTimeout", MaintainsVariableSpaceUsingBind = true)>]
         member builder.waitForTimeout(x: PlaywrightTest<_>, timeout: Single) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.WaitForTimeoutAsync(timeout))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.WaitForTimeoutAsync(timeout))
         [<CustomOperation("waitForURL", MaintainsVariableSpaceUsingBind = true)>]
         member builder.waitForURL(x: PlaywrightTest<_>, url: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.WaitForURLAsync(url))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.WaitForURLAsync(url))
         member builder.waitForURL(x: PlaywrightTest<_>, url: String, options: PageWaitForURLOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.WaitForURLAsync(url, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.WaitForURLAsync(url, options))
         member builder.waitForURL(x: PlaywrightTest<_>, url: Regex) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.WaitForURLAsync(url))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.WaitForURLAsync(url))
         member builder.waitForURL(x: PlaywrightTest<_>, url: Regex, options: PageWaitForURLOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.WaitForURLAsync(url, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.WaitForURLAsync(url, options))
         member builder.waitForURL(x: PlaywrightTest<_>, url: Func<String, Boolean>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.WaitForURLAsync(url))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.WaitForURLAsync(url))
         member builder.waitForURL(x: PlaywrightTest<_>, url: Func<String, Boolean>, options: PageWaitForURLOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.WaitForURLAsync(url, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.WaitForURLAsync(url, options))
         [<CustomOperation("exposeBinding", MaintainsVariableSpaceUsingBind = true)>]
         member builder.exposeBinding(x: PlaywrightTest<_>, name: String, callback: Action<BindingSource>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeBindingAsync(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeBindingAsync(name, callback))
         member builder.exposeBinding(x: PlaywrightTest<_>, name: String, callback: Action<BindingSource, 'T>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeBindingAsync<'T>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeBindingAsync<'T>(name, callback))
         member builder.exposeBinding(x: PlaywrightTest<_>, name: String, callback: Func<BindingSource, 'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeBindingAsync<'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeBindingAsync<'TResult>(name, callback))
         member builder.exposeBinding(x: PlaywrightTest<_>, name: String, callback: Func<BindingSource, IJSHandle, 'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeBindingAsync<'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeBindingAsync<'TResult>(name, callback))
         member builder.exposeBinding(x: PlaywrightTest<_>, name: String, callback: Func<BindingSource, 'T, 'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeBindingAsync<'T, 'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeBindingAsync<'T, 'TResult>(name, callback))
         member builder.exposeBinding(x: PlaywrightTest<_>, name: String, callback: Func<BindingSource, 'T1, 'T2, 'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeBindingAsync<'T1, 'T2, 'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeBindingAsync<'T1, 'T2, 'TResult>(name, callback))
         member builder.exposeBinding(x: PlaywrightTest<_>, name: String, callback: Func<BindingSource, 'T1, 'T2, 'T3, 'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeBindingAsync<'T1, 'T2, 'T3, 'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeBindingAsync<'T1, 'T2, 'T3, 'TResult>(name, callback))
         member builder.exposeBinding(x: PlaywrightTest<_>, name: String, callback: Func<BindingSource, 'T1, 'T2, 'T3, 'T4, 'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeBindingAsync<'T1, 'T2, 'T3, 'T4, 'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeBindingAsync<'T1, 'T2, 'T3, 'T4, 'TResult>(name, callback))
         member builder.exposeBinding(x: PlaywrightTest<_>, name: String, callback: Action) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeBindingAsync(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeBindingAsync(name, callback))
         member builder.exposeBinding(x: PlaywrightTest<_>, name: String, callback: Action, options: PageExposeBindingOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeBindingAsync(name, callback, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeBindingAsync(name, callback, options))
         [<CustomOperation("exposeFunction", MaintainsVariableSpaceUsingBind = true)>]
         member builder.exposeFunction(x: PlaywrightTest<_>, name: String, callback: Action<'T>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeFunctionAsync<'T>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeFunctionAsync<'T>(name, callback))
         member builder.exposeFunction(x: PlaywrightTest<_>, name: String, callback: Func<'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeFunctionAsync<'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeFunctionAsync<'TResult>(name, callback))
         member builder.exposeFunction(x: PlaywrightTest<_>, name: String, callback: Func<'T, 'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeFunctionAsync<'T, 'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeFunctionAsync<'T, 'TResult>(name, callback))
         member builder.exposeFunction(x: PlaywrightTest<_>, name: String, callback: Func<'T1, 'T2, 'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeFunctionAsync<'T1, 'T2, 'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeFunctionAsync<'T1, 'T2, 'TResult>(name, callback))
         member builder.exposeFunction(x: PlaywrightTest<_>, name: String, callback: Func<'T1, 'T2, 'T3, 'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeFunctionAsync<'T1, 'T2, 'T3, 'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeFunctionAsync<'T1, 'T2, 'T3, 'TResult>(name, callback))
         member builder.exposeFunction(x: PlaywrightTest<_>, name: String, callback: Func<'T1, 'T2, 'T3, 'T4, 'TResult>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeFunctionAsync<'T1, 'T2, 'T3, 'T4, 'TResult>(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeFunctionAsync<'T1, 'T2, 'T3, 'T4, 'TResult>(name, callback))
         member builder.exposeFunction(x: PlaywrightTest<_>, name: String, callback: Action) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ExposeFunctionAsync(name, callback))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ExposeFunctionAsync(name, callback))
         [<CustomOperation("addInitScript", MaintainsVariableSpaceUsingBind = true)>]
         member builder.addInitScript(x: PlaywrightTest<_>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.AddInitScriptAsync())
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.AddInitScriptAsync())
         member builder.addInitScript(x: PlaywrightTest<_>, script: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.AddInitScriptAsync(script))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.AddInitScriptAsync(script))
         member builder.addInitScript(x: PlaywrightTest<_>, script: String, scriptPath: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.AddInitScriptAsync(script, scriptPath))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.AddInitScriptAsync(script, scriptPath))
         [<CustomOperation("bringToFront", MaintainsVariableSpaceUsingBind = true)>]
         member builder.bringToFront(x: PlaywrightTest<_>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.BringToFrontAsync())
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.BringToFrontAsync())
         [<CustomOperation("check", MaintainsVariableSpaceUsingBind = true)>]
         member builder.check(x: PlaywrightTest<_>, selector: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.CheckAsync(selector))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.CheckAsync(selector))
         member builder.check(x: PlaywrightTest<_>, selector: String, options: PageCheckOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.CheckAsync(selector, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.CheckAsync(selector, options))
         [<CustomOperation("click", MaintainsVariableSpaceUsingBind = true)>]
         member builder.click(x: PlaywrightTest<_>, selector: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ClickAsync(selector))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ClickAsync(selector))
         member builder.click(x: PlaywrightTest<_>, selector: String, options: PageClickOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.ClickAsync(selector, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.ClickAsync(selector, options))
         [<CustomOperation("close", MaintainsVariableSpaceUsingBind = true)>]
         member builder.close(x: PlaywrightTest<_>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.CloseAsync())
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.CloseAsync())
         member builder.close(x: PlaywrightTest<_>, options: PageCloseOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.CloseAsync(options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.CloseAsync(options))
         [<CustomOperation("dblClick", MaintainsVariableSpaceUsingBind = true)>]
         member builder.dblClick(x: PlaywrightTest<_>, selector: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.DblClickAsync(selector))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.DblClickAsync(selector))
         member builder.dblClick(x: PlaywrightTest<_>, selector: String, options: PageDblClickOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.DblClickAsync(selector, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.DblClickAsync(selector, options))
         [<CustomOperation("dispatchEvent", MaintainsVariableSpaceUsingBind = true)>]
         member builder.dispatchEvent(x: PlaywrightTest<_>, selector: String, type_: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.DispatchEventAsync(selector, type_))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.DispatchEventAsync(selector, type_))
         member builder.dispatchEvent(x: PlaywrightTest<_>, selector: String, type_: String, eventInit: Object) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.DispatchEventAsync(selector, type_, eventInit))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.DispatchEventAsync(selector, type_, eventInit))
         member builder.dispatchEvent(x: PlaywrightTest<_>, selector: String, type_: String, eventInit: Object, options: PageDispatchEventOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.DispatchEventAsync(selector, type_, eventInit, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.DispatchEventAsync(selector, type_, eventInit, options))
         [<CustomOperation("dragAndDrop", MaintainsVariableSpaceUsingBind = true)>]
         member builder.dragAndDrop(x: PlaywrightTest<_>, source: String, target: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.DragAndDropAsync(source, target))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.DragAndDropAsync(source, target))
         member builder.dragAndDrop(x: PlaywrightTest<_>, source: String, target: String, options: PageDragAndDropOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.DragAndDropAsync(source, target, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.DragAndDropAsync(source, target, options))
         [<CustomOperation("emulateMedia", MaintainsVariableSpaceUsingBind = true)>]
         member builder.emulateMedia(x: PlaywrightTest<_>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.EmulateMediaAsync())
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.EmulateMediaAsync())
         member builder.emulateMedia(x: PlaywrightTest<_>, options: PageEmulateMediaOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.EmulateMediaAsync(options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.EmulateMediaAsync(options))
         [<CustomOperation("fill", MaintainsVariableSpaceUsingBind = true)>]
         member builder.fill(x: PlaywrightTest<_>, selector: String, value: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.FillAsync(selector, value))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.FillAsync(selector, value))
         member builder.fill(x: PlaywrightTest<_>, selector: String, value: String, options: PageFillOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.FillAsync(selector, value, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.FillAsync(selector, value, options))
         [<CustomOperation("focus", MaintainsVariableSpaceUsingBind = true)>]
         member builder.focus(x: PlaywrightTest<_>, selector: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.FocusAsync(selector))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.FocusAsync(selector))
         member builder.focus(x: PlaywrightTest<_>, selector: String, options: PageFocusOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.FocusAsync(selector, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.FocusAsync(selector, options))
         [<CustomOperation("hover", MaintainsVariableSpaceUsingBind = true)>]
         member builder.hover(x: PlaywrightTest<_>, selector: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.HoverAsync(selector))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.HoverAsync(selector))
         member builder.hover(x: PlaywrightTest<_>, selector: String, options: PageHoverOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.HoverAsync(selector, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.HoverAsync(selector, options))
         [<CustomOperation("pause", MaintainsVariableSpaceUsingBind = true)>]
         member builder.pause(x: PlaywrightTest<_>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.PauseAsync())
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.PauseAsync())
         [<CustomOperation("press", MaintainsVariableSpaceUsingBind = true)>]
         member builder.press(x: PlaywrightTest<_>, selector: String, key: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.PressAsync(selector, key))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.PressAsync(selector, key))
         member builder.press(x: PlaywrightTest<_>, selector: String, key: String, options: PagePressOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.PressAsync(selector, key, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.PressAsync(selector, key, options))
         [<CustomOperation("route", MaintainsVariableSpaceUsingBind = true)>]
         member builder.route(x: PlaywrightTest<_>, url: String, handler: Action<IRoute>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.RouteAsync(url, handler))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.RouteAsync(url, handler))
         member builder.route(x: PlaywrightTest<_>, url: Regex, handler: Action<IRoute>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.RouteAsync(url, handler))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.RouteAsync(url, handler))
         member builder.route(x: PlaywrightTest<_>, url: Func<String, Boolean>, handler: Action<IRoute>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.RouteAsync(url, handler))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.RouteAsync(url, handler))
         [<CustomOperation("setContent", MaintainsVariableSpaceUsingBind = true)>]
         member builder.setContent(x: PlaywrightTest<_>, html: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetContentAsync(html))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetContentAsync(html))
         member builder.setContent(x: PlaywrightTest<_>, html: String, options: PageSetContentOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetContentAsync(html, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetContentAsync(html, options))
         [<CustomOperation("setExtraHTTPHeaders", MaintainsVariableSpaceUsingBind = true)>]
         member builder.setExtraHTTPHeaders(x: PlaywrightTest<_>, headers: IEnumerable<KeyValuePair<String, String>>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetExtraHTTPHeadersAsync(headers))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetExtraHTTPHeadersAsync(headers))
         [<CustomOperation("setInputFiles", MaintainsVariableSpaceUsingBind = true)>]
         member builder.setInputFiles(x: PlaywrightTest<_>, selector: String, files: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files))
         member builder.setInputFiles(x: PlaywrightTest<_>, selector: String, files: String, options: PageSetInputFilesOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files, options))
         member builder.setInputFiles(x: PlaywrightTest<_>, selector: String, files: IEnumerable<String>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files))
         member builder.setInputFiles(x: PlaywrightTest<_>, selector: String, files: IEnumerable<String>, options: PageSetInputFilesOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files, options))
         member builder.setInputFiles(x: PlaywrightTest<_>, selector: String, files: FilePayload) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files))
         member builder.setInputFiles(x: PlaywrightTest<_>, selector: String, files: FilePayload, options: PageSetInputFilesOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files, options))
         member builder.setInputFiles(x: PlaywrightTest<_>, selector: String, files: IEnumerable<FilePayload>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files))
         member builder.setInputFiles(x: PlaywrightTest<_>, selector: String, files: IEnumerable<FilePayload>, options: PageSetInputFilesOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetInputFilesAsync(selector, files, options))
         [<CustomOperation("setViewportSize", MaintainsVariableSpaceUsingBind = true)>]
         member builder.setViewportSize(x: PlaywrightTest<_>, width: Int32, height: Int32) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.SetViewportSizeAsync(width, height))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.SetViewportSizeAsync(width, height))
         [<CustomOperation("tap", MaintainsVariableSpaceUsingBind = true)>]
         member builder.tap(x: PlaywrightTest<_>, selector: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.TapAsync(selector))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.TapAsync(selector))
         member builder.tap(x: PlaywrightTest<_>, selector: String, options: PageTapOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.TapAsync(selector, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.TapAsync(selector, options))
         [<CustomOperation("type_", MaintainsVariableSpaceUsingBind = true)>]
         member builder.type_(x: PlaywrightTest<_>, selector: String, text: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.TypeAsync(selector, text))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.TypeAsync(selector, text))
         member builder.type_(x: PlaywrightTest<_>, selector: String, text: String, options: PageTypeOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.TypeAsync(selector, text, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.TypeAsync(selector, text, options))
         [<CustomOperation("uncheck", MaintainsVariableSpaceUsingBind = true)>]
         member builder.uncheck(x: PlaywrightTest<_>, selector: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.UncheckAsync(selector))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.UncheckAsync(selector))
         member builder.uncheck(x: PlaywrightTest<_>, selector: String, options: PageUncheckOptions) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.UncheckAsync(selector, options))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.UncheckAsync(selector, options))
         [<CustomOperation("unroute", MaintainsVariableSpaceUsingBind = true)>]
         member builder.unroute(x: PlaywrightTest<_>, url: String) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.UnrouteAsync(url))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.UnrouteAsync(url))
         member builder.unroute(x: PlaywrightTest<_>, url: String, handler: Action<IRoute>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.UnrouteAsync(url, handler))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.UnrouteAsync(url, handler))
         member builder.unroute(x: PlaywrightTest<_>, url: Regex) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.UnrouteAsync(url))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.UnrouteAsync(url))
         member builder.unroute(x: PlaywrightTest<_>, url: Regex, handler: Action<IRoute>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.UnrouteAsync(url, handler))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.UnrouteAsync(url, handler))
         member builder.unroute(x: PlaywrightTest<_>, url: Func<String, Boolean>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.UnrouteAsync(url))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.UnrouteAsync(url))
         member builder.unroute(x: PlaywrightTest<_>, url: Func<String, Boolean>, handler: Action<IRoute>) =
-            builder.Bind(ignore x, fun () (page: IPage) -> page.UnrouteAsync(url, handler))
+            builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.UnrouteAsync(url, handler))

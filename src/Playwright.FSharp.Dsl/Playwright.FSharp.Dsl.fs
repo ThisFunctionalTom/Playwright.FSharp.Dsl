@@ -1,5 +1,7 @@
 namespace Playwright.FSharp.Dsl
 
+open System
+open System.Reflection
 open System.Threading.Tasks
 open Microsoft.Playwright
 open FSharp.Control.Tasks
@@ -8,16 +10,44 @@ open Extensions
 type PlaywrightTest<'T> = IPage -> Task<'T>
 type PlaywrightTest = IPage -> Task
 
+type Ex =
+    /// Modify the exception, preserve the stacktrace and add the current stack, then throw (.NET 2.0+).
+    /// This puts the origin point of the exception on top of the stacktrace.
+    static member inline throwPreserve ex =
+        let preserveStackTrace =
+            typeof<Exception>.GetMethod("InternalPreserveStackTrace", BindingFlags.Instance ||| BindingFlags.NonPublic)
+
+        (ex, null)
+        |> preserveStackTrace.Invoke  // alters the exn, preserves its stacktrace
+        |> ignore
+
+        raise ex
+
+module Task =
+    let ignore (t: Task<_>) =
+        task {
+            let! _ = t
+            return ()
+        }
+
 type Playwright =
     static member RunAsTask (test: PlaywrightTest<'a>) : Task<'a> =
         task {
             use! playwright = Playwright.CreateAsync()
-            // Once native support for IAsyncDisposable is released (.NET SDK 6) we can use "use!" here
-            return! Task.Using(playwright.Chromium.LaunchAsync, fun browser ->
-                task  {
-                    let! page = browser.NewPageAsync()
-                    return! test page
-                })
+            let! browser = playwright.Chromium.LaunchAsync()
+            try
+                let! page = browser.NewPageAsync()
+                return! test page
+            with
+            | ex ->
+                do! browser.DisposeAsync()
+                return Ex.throwPreserve ex
+            // // Once native support for IAsyncDisposable is released (.NET SDK 6) we can use "use!" here
+            // return! Task.Using(playwright.Chromium.LaunchAsync, fun browser ->
+            //     task  {
+            //         let! page = browser.NewPageAsync()
+            //         return! test page
+            //     })
         }
 
     static member Run (test: PlaywrightTest<'a>) : 'a =

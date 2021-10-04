@@ -93,7 +93,7 @@ let getCustomOp (name, mis: MethodInfo[]) =
                 if pis.Length > 0
                 then $"member builder.{getMethodName name}(x: PlaywrightTest<_>, {getParams pis}) ="
                 else $"member builder.{getMethodName name}(x: PlaywrightTest<_>) ="
-                $"    builder.Bind(ignore x, fun () (page: IPage) -> page.{mi.Name}{getGenericArgs mi}({getArgs pis}))" |]
+                $"    builder.Bind(x >> Task.ignore, fun () (page: IPage) -> page.{mi.Name}{getGenericArgs mi}({getArgs pis}))" |]
 
 let generatePW () =
     let methods = typeof<IPage>.GetMethods()
