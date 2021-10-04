@@ -1,0 +1,19 @@
+{
+    "FSharp.fsacRuntime":"netcore",
+    "FSharp.enableAnalyzers": true,
+    "FSharp.analyzersPath": [
+        "./packages/analyzers"
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "bin": true,
+        "obj": true,
+        "paket-files": true,
+        "packages": true
+    }
+}

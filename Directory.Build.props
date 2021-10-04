@@ -1,0 +1,13 @@
+<Project>
+    <PropertyGroup>
+        <!-- summary is not migrated from project.json, but you can use the <Description> property for that if needed. -->
+        <PackageTags>f#, fsharp</PackageTags>
+        <PackageProjectUrl>https://github.com/ThisFunctionalTom/Playwright.FSharp.Dsl</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/ThisFunctionalTom/Playwright.FSharp.Dsl/blob/master/LICENSE.md</PackageLicenseUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <RepositoryType>git</RepositoryType>
+        <Authors>ThisFunctionalTom</Authors>
+        <RepositoryUrl>https://github.com/ThisFunctionalTom/Playwright.FSharp.Dsl</RepositoryUrl>
+        <!-- owners is not supported in MSBuild -->
+    </PropertyGroup>
+</Project>
