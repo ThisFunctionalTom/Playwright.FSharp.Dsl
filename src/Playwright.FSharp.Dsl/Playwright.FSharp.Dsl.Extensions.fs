@@ -5,15 +5,17 @@ open Microsoft.Playwright
 open FSharp.Control.Tasks
 
 module Extensions =
-    let inline combineAndIgnore (x: PlaywrightTest<'a>, f: PlaywrightTest<'b>) : PlaywrightTest<unit> =
-        fun page ->
-            task {
-                let! _ = x page
-                let! _ = f page
-                return ()
-            }
-
     type PlaywrightBuilder with
         [<CustomOperation("screenshot", MaintainsVariableSpaceUsingBind = true)>]
-        member _.screenshot(x: PlaywrightTest<_>, path: string) : PlaywrightTest<unit> =
-            combineAndIgnore (x, PW.screenshot (PageScreenshotOptions(Path = path)))
+        member builder.screenshot(x: PlaywrightTest<_>, path: string) : PlaywrightTest<unit> =
+            builder.Combine(x, PW.screenshot (PageScreenshotOptions(Path = path)) >> Task.ignore)
+
+        [<CustomOperation("goto'", MaintainsVariableSpaceUsingBind = true)>]
+        member builder.goto(x: PlaywrightTest<_>, url: string) : PlaywrightTest<unit> =
+            let impl =
+                playwright {
+                    let! result = PW.goto url
+                    if not result.Ok then
+                        failwith
+                }
+            builder.Combine (x, )

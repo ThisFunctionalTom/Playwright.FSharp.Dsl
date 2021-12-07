@@ -24,9 +24,8 @@ module SampleTests =
     let tests =
         testList "samples" [
             pwTest "Playwright sample" {
-                let! _ = goto "https://playwright.dev/dotnet"
+                goto "https://playwright.dev/dotnet"
+                let! _ = PW.goto "https://playwright.dev/dotnet"
                 screenshot "screenshot3.png"
-                printfn "Screenshot"
-                return ()
             }
         ]
